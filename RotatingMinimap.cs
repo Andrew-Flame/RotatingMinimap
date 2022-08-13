@@ -22,7 +22,7 @@ namespace ValheimMod
 
             /* Подгружаем текстуры */
             ImageConversion.LoadImage(maskTexture, File.ReadAllBytes("./BepInEx/plugins/RotatingMinimap/Mask.png"));  //Подгружаем маску из файла
-            ImageConversion.LoadImage(compassTexture, File.ReadAllBytes("./BepInEx/plugins/RotatingMinimap/Compass.png"));  //Подгружаем компас из файла
+            ImageConversion.LoadImage(compassTexture, File.ReadAllBytes("./BepInEx/plugins/RotatingMinimap/RectCompass.png"));  //Подгружаем компас из файла
         }
 
         /* Этот код не позволяем маркеру игрока на миникарте крутиться */
