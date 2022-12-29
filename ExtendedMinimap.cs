@@ -6,11 +6,11 @@ using UnityEngine.UI;
 
 namespace ValheimMod
 {
-    [BepInPlugin("Flame.RotatingMinimap", "Rotating Minimap", "1.0.0")]
+    [BepInPlugin("Flame.ExtendedMinimap", "Extended Minimap", "1.1.0")]
     [BepInProcess("valheim.exe")]
-    public class RotatingMinimap : BaseUnityPlugin
+    public class ExtendedMinimap : BaseUnityPlugin
     {
-        private readonly Harmony harmony = new Harmony("Flame.RotatingMinimap");
+        private readonly Harmony harmony = new Harmony("Flame.ExtendedMinimap");
         private static Texture2D maskTexture = new Texture2D(1000, 1000);
         private static Texture2D compassTexture = new Texture2D(1000, 1000);
         private static GameObject minimap;
@@ -21,8 +21,8 @@ namespace ValheimMod
             harmony.PatchAll();
 
             /* Подгружаем текстуры */
-            ImageConversion.LoadImage(maskTexture, File.ReadAllBytes("./BepInEx/plugins/RotatingMinimap/Mask.png"));  //Подгружаем маску из файла
-            ImageConversion.LoadImage(compassTexture, File.ReadAllBytes("./BepInEx/plugins/RotatingMinimap/RectCompass.png"));  //Подгружаем компас из файла
+            ImageConversion.LoadImage(maskTexture, File.ReadAllBytes("./BepInEx/plugins/ExtendedMinimap/Mask.png"));  //Подгружаем маску из файла
+            ImageConversion.LoadImage(compassTexture, File.ReadAllBytes("./BepInEx/plugins/ExtendedMinimap/RectCompass.png"));  //Подгружаем компас из файла
         }
 
         /* Этот код не позволяем маркеру игрока на миникарте крутиться */
@@ -66,7 +66,7 @@ namespace ValheimMod
 
                 /* Создаем круглую маску */
                 ___m_smallRoot.GetComponent<Image>().sprite = Sprite.Create(maskTexture, new Rect(0, 0, 1000, 1000), new Vector2(0, 0));  //Создаем спрайт маски из текстуры
-                //___m_smallRoot.AddComponent<Mask>();  //Добавляем компонент маски
+                ___m_smallRoot.AddComponent<Mask>();  //Добавляем компонент маски
 
                 /* Создаем объект компаса и добавляем его к миникарте */
                 GameObject compass = new GameObject("Сompass");  //Инициализируем объект
